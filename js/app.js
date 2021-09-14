@@ -7,7 +7,7 @@ const loadProducts = () => {
     .then((data) => showProducts(data));
 };
 
-loadProducts();
+
 
 // show all product in UI 
 const showProducts = (products) => {
@@ -109,7 +109,9 @@ const updateTotal = () => {
 
 };
 const details=()=>{
-const idm=document.getElementById('details-btn').innerText
+const idm=document.getElementById('details-btn');
+
+
   const urls=`https://fakestoreapi.com/products/1`;
   fetch(urls)
   .then(res=>res.json())
@@ -117,17 +119,25 @@ const idm=document.getElementById('details-btn').innerText
 
  
 }
+
 const detailOf = (allProducts)=>{
  
-  console.log(allProducts)
-//  const detailDisplay=document.getElementById('details').innerText;
+ 
 
+document.getElementById('details').innerText='';
 const div=document.createElement('div');
-div.classList.add('detailsButton');
+
+div.classList.add('single-productDetail');
 div.innerHTML=`
+<div  class="single">
+<img class="product-image" src=${allProducts.image}></img>
+  </div>
 <h3>${allProducts.title}</h3>
 `;
 
 document.getElementById('details').appendChild(div);
 
+
 }
+
+loadProducts();
